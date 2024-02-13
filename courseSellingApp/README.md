@@ -12,13 +12,23 @@ Welcome to the backend repository of our course selling website project! This pr
 
 ## API endpoints 
 Admin Endpoints-
+
 Admin Signup: POST /admin/signup
+
 Admin Create Courses: POST /admin/createCourses
+
 Admin Get All Courses: GET /admin/courses
+
 Admin Get Published Courses: GET /admin/publishedCourses
 
+
 User Endpoints-
+
 User Signup: POST /user/signup
+
 User Get All Courses: GET /user/courses
+
 User Purchase Course: POST /courses/:courseId
+
 User Get Purchased Courses: GET /user/purchasedCourses
+
