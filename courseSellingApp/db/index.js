@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const { number, boolean } = require('zod');
 require('dotenv').config();
 
-// Accessing environment variables using process.env
-
+// Accessing environment variables
+console.log(process.env.MONGODB_URL)
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URL)
 .then(() => console.log("mongoDb connected!"))
@@ -14,13 +14,19 @@ const AdminSchema = new mongoose.Schema({
   // Schema definition here
   username: String,
   password: String,
-  publishedCourses: []
+  publishedCourses: [{ 
+    type : mongoose.Schema.Types.ObjectId ,
+    ref : 'Course'
+  }]
 });
 
 const UserSchema = new mongoose.Schema({
   username: String,
   password: String,
-  purchasedCourses: []
+  purchasedCourses: [{ 
+    type : mongoose.Schema.Types.ObjectId ,
+    ref : 'Course'
+  }]
 })
 
 const CourseSchema = new mongoose.Schema({

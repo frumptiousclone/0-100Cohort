@@ -63,18 +63,16 @@ app.post('/admin/createCourses',adminMiddleware , async (req, res) => {
     const description = req.body.description;
     const price = req.body.price;
     const imageLink = req.body.imageLink
-    const courseId = Math.floor(Math.random() * 20) + 1;
-
+    //const courseId = Math.floor(Math.random() * 20) + 1;
     const course = await new Course({
         publishedBy,
         courseTitle,
-        courseId,
         description,
         price,
         published: true,
         imageLink
     }).save()
-    await Admin.updateOne({username: publishedBy}, {$push: {publishedCourses: course}})
+    await Admin.updateOne({username: publishedBy}, {$push: {publishedCourses: course._id}})
     res.send("Course added successfully!")
 });
 
@@ -103,9 +101,7 @@ app.get('/courses/publishedCourses', adminMiddleware, async (req, res) => {
         }
     }
 });
-
 // user routes
-
 app.post('/user/signup', signupValidator, (req, res) => {
     // user signup logic
     const username = req.body.username;
@@ -147,7 +143,7 @@ app.post('/courses/:courseId', userMiddleware, async (req, res) => {
             res.send("Course not found!")
             return;
         }
-        await User.updateOne({username}, {$push: {purchasedCourses: purchasedCourse}});
+        await User.updateOne({username}, {$push: {purchasedCourses: courseId}});
         res.json({msg: `Purchase successfull!`})
     } catch (err) {
         res.json({msg: 'Error!'})
@@ -173,5 +169,6 @@ app.use((err, req, res, next) => {
     console.error(err);
 })
 
-app.listen(5000, (req, res) => console.log('live!'))
+const PORT = 5000;
 
+app.listen(PORT, (req, res) => console.log("live!"));
