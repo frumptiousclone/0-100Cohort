@@ -1,14 +1,14 @@
-##Course Selling Website Backend
+## Course Selling Website Backend
 Welcome to the backend repository of our course selling website project! This project provides a basic backend solution for managing courses and user authentication.
 
-#Features
+# Features
 User Authentication: Sign in as an admin or a regular user.
 Admin Privileges: Admins can create new courses effortlessly.
 Course Purchasing: Users can purchase courses seamlessly.
 Database: MongoDB used for efficient data storage.
-#Tech Stack: 
+# Tech Stack: 
 Built with JavaScript, Express.js, JWT, and Zod.
-#API endpoints
+# API endpoints
 Admin Endpoints-
 
 Admin Signup: POST /admin/signup
